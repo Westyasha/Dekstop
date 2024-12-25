@@ -1,20 +1,19 @@
 let zIndexCounter = 1;
 const video = document.getElementById('background-video');
-
+const spotifyWidget = document.querySelector('.spotify-widget');
 function openApp(appId) {
   const windowsContainer = document.getElementById('windows-container');
   const overlay = document.getElementById('overlay');
-    let windowElement = document.querySelector(`[data-window-app="${appId}"]`);
-
-  if (windowElement) {
+  let windowElement = document.querySelector(`[data-window-app="${appId}"]`);
+  
+  if(windowElement){
     windowElement.classList.add('open');
     windowElement.style.zIndex = zIndexCounter++;
     overlay.style.display = 'block';
     return;
   }
 
-
-    const newWindow = document.createElement('div');
+  const newWindow = document.createElement('div');
     newWindow.classList.add('window');
     newWindow.setAttribute('data-window-app', appId);
     newWindow.style.zIndex = zIndexCounter++;
@@ -26,18 +25,25 @@ function openApp(appId) {
      switch (appId) {
         case 'calculator':
           header =  `<div class="window-header">
-                      <div style="flex: 1;">Calculator</div>
+                      <div style="flex: 1;cursor:pointer;" onclick="window.open('https://westyasha.github.io/calculator/', '_blank')">Calculator</div>
                       <div class="close-button" onclick="closeWindow(this)"></div>
                     </div>`;
             iframeUrl = 'https://westyasha.github.io/calculator/';
             break;
          case 'bio':
           header =  `<div class="window-header">
-                      <div style="flex: 1;">Bio Profile</div>
+                     <div style="flex: 1; cursor:pointer;" onclick="window.open('https://westyasha.online', '_blank')">Profile Card</div>
                       <div class="close-button" onclick="closeWindow(this)"></div>
                     </div>`;
-           iframeUrl = 'https://leans.fun/Westyasha';
+           iframeUrl = 'https://westyasha.online';
            break;
+       case 'links':
+         header =  `<div class="window-header">
+           <div style="flex: 1;cursor:pointer;" onclick="window.open('https://westyasha.github.io/links/', '_blank')">Links</div>
+          <div class="close-button" onclick="closeWindow(this)"></div>
+          </div>`;
+         iframeUrl = 'https://westyasha.github.io/links/';
+          break;
         default:
            header =  `<div class="window-header">
                       <div style="flex: 1;">${appId}</div>
@@ -47,7 +53,7 @@ function openApp(appId) {
         }
 
 
-    newWindow.innerHTML = header + `<div class="window-content"><iframe src="${iframeUrl}" frameborder="0" ></iframe></div>`;
+    newWindow.innerHTML = header + `<div class="window-content"><iframe src="${iframeUrl}" frameborder="0" style="width: 100%; height: 100%;"></iframe></div>`;
     windowsContainer.appendChild(newWindow);
       overlay.style.display = 'block';
 
@@ -66,7 +72,13 @@ function closeWindow(element){
     document.getElementById('overlay').style.display = 'none';
 
 }
+function openSpotify() {
+   window.location.href = 'spotify:';
+}
 
+setTimeout(() => {
+  spotifyWidget.classList.add('show');
+}, 7500);
 
 document.querySelectorAll('.dock-item').forEach(item => {
   item.addEventListener('click', () => {
@@ -77,28 +89,27 @@ document.querySelectorAll('.dock-item').forEach(item => {
 
 // Get the date and time
 function updateDateTime() {
-    fetch('https://api.timeapi.io/v1/time/current/utc')
-        .then(response => response.json())
-        .then(data => {
-            const currentTime = new Date(data.dateTime);
-            const options = {
-                weekday: 'short',
-                month: 'short',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit'
-            };
-            const formattedTime = currentTime.toLocaleDateString('en-US', options)
-              .replace(',', '.')
-              .replace(' г.', '');
-              document.querySelector('.date-time').textContent = formattedTime;
-        })
-        .catch(error => {
-            console.error('Error getting time:', error);
-        });
+  fetch('https://timeapi.io/api/Time/current/zone?timeZone=UTC')
+  .then(response => response.json())
+    .then(data => {
+      const currentTime = new Date(data.dateTime);
+      const options = {
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      };
+      const formattedTime = currentTime.toLocaleDateString('en-US', options)
+        .replace(',', '.')
+        .replace(' г.', '');
+        document.querySelector('.date-time').textContent = formattedTime;
+    })
+    .catch(error => {
+      console.error('Error getting time:', error);
+    });
 }
-
 
 updateDateTime();
 setInterval(updateDateTime, 1000);

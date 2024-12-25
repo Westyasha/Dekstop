@@ -4,31 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-     <link rel="icon" href="icons/moon.png" type="image/png">
-    <title>My Portfolio</title>
+    
+    <!-- Метаданные для Telegram и Discord (Open Graph) -->
+    <meta property="og:title" content="My Portfolio">
+    <meta property="og:description" content="Мое портфолио веб-разработчика с интерактивным интерфейсом в стиле рабочего стола.">
+    <meta property="og:image" content="https://вашсайт.com/images/preview.jpg">  <!-- Замените на реальный путь -->
+    <meta property="og:url" content="https://вашсайт.com"> <!-- Замените на реальный URL вашего сайта -->
+    <meta property="og:type" content="website">
+
+    <!-- Другие метатеги -->
+    <meta name="description" content="Рабочий стол запада">
+    
+    <title>Desktop West</title>
+     <link rel="icon" href="images/moon.png" type="image/png">
+    <!-- Placeholder иконки -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/placeholder.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/placeholder.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/placeholder.png">
+    <link rel="manifest" href="/site.webmanifest">
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="dark-theme">
     <div class="video-background">
-      <video id="background-video" loop muted playsinline src="images/background.mp4">
-      </video>
+        <video id="background-video" loop muted playsinline src="https://cdn.fastly.steamstatic.com/steamcommunity/public/images/items/2861720/124bf94415accfef96f86cbbe566e42374d53b76.webm">
+        </video>
     </div>
     <header>
        <div class="status-bar">
            <i class="fas fa-wifi status-item"></i>
-           <i class="fab fa-spotify status-item spotify-icon" onclick="window.open('https://www.spotify.com/', '_blank')"></i>
+           <i class="fab fa-spotify status-item spotify-icon" onclick="openSpotify()"></i>
              <span class="date-time status-item"></span>
        </div>
    </header>
 
     <div class="desktop">
+         <div class="widgets">
+              <div class="widget spotify-widget">
+              <iframe src="https://6klabs.com/widget/spotify/400907afcbf788e7148a180a4e6f6f2ebf5a61aee96159ff23016da3d88ead32/676b774b1b985465a1b54b80" style="width: 100%; height: 100%; border: none;"></iframe>
+          </div>
+          </div>
         <div class="dock">
            <div class="dock-item" data-app="calculator">
                <img src="https://i.pinimg.com/736x/f1/0a/f3/f10af3410d40556df99aaf9a2985e324.jpg" alt="Calculator">
+               <span class="dock-label">Calculator</span>
            </div>
            <div class="dock-item" data-app="bio">
-               <img src="https://s3.leans.fun/avatars/7fa0a365-e3f9-4926-bd05-fbb352a5fe65.gif" alt="Bio Profile">
+               <img src="https://s3.leans.fun/avatars/7fa0a365-e3f9-4926-bd05-fbb352a5fe65.gif" alt="Profile Card">
+               <span class="dock-label">Profile Card</span>
+           </div>
+           <div class="dock-item" data-app="links">
+               <img src="images/links.png" alt="Links">
+               <span class="dock-label">Links</span>
            </div>
          </div>
 
