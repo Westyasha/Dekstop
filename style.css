@@ -1,0 +1,248 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #333;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    transition: background-color 0.3s ease;
+    color: #fff;
+}
+
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    background-color: rgba(20, 20, 20, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 10px 20px;
+      transition: background-color 0.3s ease;
+}
+
+
+.status-bar {
+    display: flex;
+    align-items: center;
+}
+.status-bar .fas {
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.status-item {
+    margin-left: 10px;
+    font-size: 14px;
+    white-space: nowrap;
+      transition: color 0.3s ease;
+}
+.status-bar .fab{
+    margin-left: 8px;
+    cursor: pointer;
+    color: #1DB954;
+}
+
+.desktop {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    overflow-y: auto;
+}
+
+.dock {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    border-radius: 20px;
+    display: flex;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 100;
+    justify-content: center;
+}
+
+.dock-item {
+    width: 60px;
+    height: 60px;
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    border-radius: 100%;
+    padding: 10px;
+}
+
+.dock-item:hover {
+    transform: scale(1.1);
+}
+
+.dock-item img {
+    max-width: 100%;
+    max-height: 100%;
+       border-radius: 100%;
+}
+
+.windows {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    width: 80%;
+    height: 80%;
+    background-color: rgb(20, 20, 20);
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px;
+    overflow: hidden;
+    opacity: 0;
+    border: 1px solid #555;
+    pointer-events: auto;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.window.open {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.window-header {
+  display: flex;
+  align-items: center;
+   padding: 0px 10px;
+    height: 30px;
+    border-bottom: 1px solid rgb(85, 85, 85);
+    background-color: rgb(34, 34, 34);
+}
+
+
+.close-button{
+   width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgb(255, 95, 87);
+    margin-left: auto;
+    cursor: pointer;
+}
+.close-button:hover{
+ opacity: 0.8;
+}
+
+.widgets {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    justify-content: flex-start;
+}
+
+.widget {
+    background-color: rgba(255, 255, 255, 0.8);
+    margin: 10px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+     box-sizing: border-box;
+    transition: transform 0.2s ease-in-out, background-color 0.3s ease;
+}
+
+.widget:hover {
+  transform: scale(1.02);
+}
+
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+     -webkit-backdrop-filter: blur(5px);
+    display: none;
+    z-index: 999;
+}
+.window-content {
+   width: 100%;
+    height: calc(100% - 30px);
+}
+.window-content iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+
+.video-background{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+    transition: opacity 0.3s ease;
+}
+.video-background video {
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    opacity: 1;
+}
+
+
+/* Адаптация мобильных устройств */
+@media (max-width: 768px) {
+    .desktop {
+        padding: 10px;
+        flex-direction: column;
+    }
+     .video-background video {
+        object-fit: cover;
+         width: auto;
+        height: auto;
+       min-height: 100%;
+        min-width: 100%;
+    }
+    .dock {
+        bottom: 10px;
+        padding: 5px;
+        justify-content: center;
+    }
+    .dock-item {
+        width: 40px;
+        height: 40px;
+        margin: 0 5px;
+    }
+
+    .widgets {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+   .widgets .widget {
+       margin: 5px;
+       width: 100%;
+    }
+    .window {
+       width: 95%;
+      height: 90%;
+    }
+}

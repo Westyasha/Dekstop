@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+     <link rel="icon" href="icons/moon.png" type="image/png">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dark-theme">
+    <div class="video-background">
+      <video id="background-video" loop muted playsinline src="images/background.mp4">
+      </video>
+    </div>
+    <header>
+       <div class="status-bar">
+           <i class="fas fa-wifi status-item"></i>
+           <i class="fab fa-spotify status-item spotify-icon" onclick="window.open('https://www.spotify.com/', '_blank')"></i>
+             <span class="date-time status-item"></span>
+       </div>
+   </header>
+
+    <div class="desktop">
+        <div class="dock">
+           <div class="dock-item" data-app="calculator">
+               <img src="https://i.pinimg.com/736x/f1/0a/f3/f10af3410d40556df99aaf9a2985e324.jpg" alt="Calculator">
+           </div>
+           <div class="dock-item" data-app="bio">
+               <img src="https://s3.leans.fun/avatars/7fa0a365-e3f9-4926-bd05-fbb352a5fe65.gif" alt="Bio Profile">
+           </div>
+         </div>
+
+    </div>
+     <div class="windows" id="windows-container"></div>
+    <div class="overlay" id="overlay"></div>
+    <script src="script.js"></script>
+</body>
+</html>
