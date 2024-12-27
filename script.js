@@ -107,10 +107,6 @@
       }
   }
 
-  function openSpotify() {
-      window.location.href = 'spotify:';
-  }
-
   function updateDateTime() {
       fetch('https://timeapi.io/api/Time/current/zone?timeZone=UTC')
           .then(response => {
@@ -139,6 +135,7 @@
               document.querySelector('.date-time').textContent = 'Error getting time';
           });
   }
+
   document.addEventListener('DOMContentLoaded', () => {
       const videoPlayer = document.getElementById('background-video');
       const backgroundImage = document.getElementById('background-image');
@@ -159,6 +156,13 @@
               const appId = item.getAttribute('data-app');
               openApp(appId);
           });
+      });
+
+      // Добавляем обработчик клика на ссылку Spotify
+      const spotifyLink = document.getElementById('spotify-link');
+      spotifyLink.addEventListener('click', (event) => {
+          // Здесь можно добавить дополнительную логику, если нужно
+          // например, проверку, установлено ли приложение Spotify
       });
 
       updateDateTime();
