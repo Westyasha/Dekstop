@@ -139,8 +139,9 @@
   document.addEventListener('DOMContentLoaded', () => {
       const videoPlayer = document.getElementById('background-video');
       const backgroundImage = document.getElementById('background-image');
+      const videoSource = videoPlayer.querySelector('source');
 
-      videoPlayer.addEventListener('error', function() {
+      videoSource.addEventListener('error', function() {
           console.error('Видео не удалось загрузить.');
           videoPlayer.style.display = 'none';
           backgroundImage.style.display = 'block';
