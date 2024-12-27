@@ -1,15 +1,19 @@
 let zIndexCounter = 1;
 const video = document.getElementById('background-video');
 const spotifyWidget = document.querySelector('.spotify-widget');
+const overlay = document.getElementById('overlay');
+overlay.style.opacity = 0;
+
+
 function openApp(appId) {
   const windowsContainer = document.getElementById('windows-container');
-  const overlay = document.getElementById('overlay');
   let windowElement = document.querySelector(`[data-window-app="${appId}"]`);
   
   if(windowElement){
     windowElement.classList.add('open');
     windowElement.style.zIndex = zIndexCounter++;
-    overlay.style.display = 'block';
+    overlay.classList.add('active');
+      overlay.style.pointerEvents = 'auto';
     return;
   }
 
@@ -55,12 +59,14 @@ function openApp(appId) {
 
     newWindow.innerHTML = header + `<div class="window-content"><iframe src="${iframeUrl}" frameborder="0" style="width: 100%; height: 100%;"></iframe></div>`;
     windowsContainer.appendChild(newWindow);
-      overlay.style.display = 'block';
+      overlay.classList.add('active');
+        overlay.style.pointerEvents = 'auto';
+
 
     const dockItem = document.querySelector(`[data-app="${appId}"]`);
     if(dockItem){
        dockItem.classList.add('active');
-       setTimeout(() => dockItem.classList.remove('active'), 200);
+       setTimeout(() => dockItem.classList.remove('active'), 100);
     }
        setTimeout(() => newWindow.classList.add('open'), 10);
 
@@ -68,9 +74,9 @@ function openApp(appId) {
 }
 
 function closeWindow(element){
-      element.closest('.window').classList.remove('open');
-    document.getElementById('overlay').style.display = 'none';
-
+    element.closest('.window').classList.remove('open');
+    overlay.classList.remove('active');
+    overlay.style.pointerEvents = 'none';
 }
 function openSpotify() {
    window.location.href = 'spotify:';
