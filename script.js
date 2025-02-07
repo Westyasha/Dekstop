@@ -108,33 +108,34 @@
   }
 
   function updateDateTime() {
-      fetch('https://timeapi.io/api/Time/current/zone?timeZone=UTC')
-          .then(response => {
-              if (!response.ok) {
-                  throw new Error('Network response was not ok');
-              }
-              return response.json();
-          })
-          .then(data => {
-              const currentTime = new Date(data.dateTime);
-              const options = {
-                  weekday: 'short',
-                  month: 'short',
-                  day: 'numeric',
-                  hour: '2-digit',
-                  minute: '2-digit',
-                  second: '2-digit',
-                  year: 'numeric'
-              };
-              const formattedTime = currentTime.toLocaleDateString('en-US', options)
-                  .replace(',', '.');
-              document.querySelector('.date-time').textContent = formattedTime;
-          })
-          .catch(error => {
-              console.error('Error getting time:', error);
-              document.querySelector('.date-time').textContent = 'Error getting time';
-          });
-  }
+    fetch('https://timeapi.io/api/Time/current/zone?timeZone=Europe/Moscow')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const currentTime = new Date(data.dateTime);
+            const options = {
+                weekday: 'short',
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                year: 'numeric',
+                timeZone: 'Europe/Moscow' // Указываем таймзону
+            };
+            const formattedTime = currentTime.toLocaleString('ru-RU', options)
+                .replace(',', '.'); 
+            document.querySelector('.date-time').textContent = formattedTime;
+        })
+        .catch(error => {
+            console.error('Ошибка получения времени:', error);
+            document.querySelector('.date-time').textContent = 'Ошибка получения времени';
+        });
+}
 
   document.addEventListener('DOMContentLoaded', () => {
       const videoPlayer = document.getElementById('background-video');
