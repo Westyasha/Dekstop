@@ -4,7 +4,7 @@
       calculator: 'https://westyasha.github.io/calculator/',
       bio: 'https://westyasha.online',
       links: 'https://westyasha.github.io/links/',
-      'rest-api': 'https://rest-api-a4l.pages.dev/' // Add URL for rest-api
+      'rest-api': 'https://westyasha-rest-api.vercel.app' // Add URL for rest-api
   };
   const video = document.getElementById('background-video');
   const spotifyWidget = document.querySelector('.spotify-widget');
