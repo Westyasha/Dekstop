@@ -3,7 +3,8 @@
   const APP_URLS = {
       calculator: 'https://westyasha.github.io/calculator/',
       bio: 'https://westyasha.online',
-      links: 'https://westyasha.github.io/links/'
+      links: 'https://westyasha.github.io/links/',
+      'rest-api': 'https://rest-api-a4l.pages.dev/' // Add URL for rest-api
   };
   const video = document.getElementById('background-video');
   const spotifyWidget = document.querySelector('.spotify-widget');
@@ -56,6 +57,13 @@
          <div style="flex: 1;cursor:pointer;" onclick="window.open('${APP_URLS[appId]}', '_blank')">Links</div>
         <div class="close-button"></div>
         </div>`;
+              iframeUrl = APP_URLS[appId];
+              break;
+          case 'rest-api': // Add case for rest-api
+              header = `<div class="window-header">
+                    <div style="flex: 1;cursor:pointer;" onclick="window.open('${APP_URLS[appId]}', '_blank')">Rest-api</div>
+                    <div class="close-button"></div>
+                  </div>`;
               iframeUrl = APP_URLS[appId];
               break;
           default:
