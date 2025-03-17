@@ -4,7 +4,8 @@
       calculator: 'https://westyasha.github.io/calculator/',
       bio: 'https://westyasha.online',
       links: 'https://westyasha.github.io/links/',
-      'rest-api': 'https://westyasha-rest-api.vercel.app' // Add URL for rest-api
+      'rest-api': 'https://westyasha-rest-api.vercel.app',
+      'phishing-viewer': 'https://phishing-topaz.vercel.app/' // Add URL for phishing-viewer
   };
   const video = document.getElementById('background-video');
   const spotifyWidget = document.querySelector('.spotify-widget');
@@ -59,9 +60,16 @@
         </div>`;
               iframeUrl = APP_URLS[appId];
               break;
-          case 'rest-api': // Add case for rest-api
+          case 'rest-api':
               header = `<div class="window-header">
                     <div style="flex: 1;cursor:pointer;" onclick="window.open('${APP_URLS[appId]}', '_blank')">Rest-api</div>
+                    <div class="close-button"></div>
+                  </div>`;
+              iframeUrl = APP_URLS[appId];
+              break;
+          case 'phishing-viewer': // Add case for phishing-viewer
+              header = `<div class="window-header">
+                    <div style="flex: 1;cursor:pointer;" onclick="window.open('${APP_URLS[appId]}', '_blank')">Phishing Viewer</div>
                     <div class="close-button"></div>
                   </div>`;
               iframeUrl = APP_URLS[appId];
