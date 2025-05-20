@@ -4,7 +4,7 @@
       calculator: 'https://westyasha.github.io/calculator/',
       bio: 'https://westyasha.online',
       links: 'https://westyasha.github.io/links/',
-      'rest-api': 'http://rest-api.space/',
+      'rest-api': 'https://rest-api.space/',
       'phishing-viewer': 'https://phishing-topaz.vercel.app/' // Add URL for phishing-viewer
   };
   const video = document.getElementById('background-video');
